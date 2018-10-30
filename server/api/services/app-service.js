@@ -113,7 +113,7 @@ exports.addPhotoTag = function(tags, id, callback){
 
 
 exports.uploadPhoto = function(path, name, des, callback){
-    var filepath = "/Users/ankushdeora/Downloads/"+path;
+    var filepath = "/Users/*/*/"+path;
     var readStream = fs.createReadStream(filepath);
     //console.log(readStream);
     // let headers = new Headers();
