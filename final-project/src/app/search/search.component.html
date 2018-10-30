@@ -1,0 +1,31 @@
+<p>
+  search works!
+</p>
+<!-- <div class="container">
+	<div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+                <div class="input-group stylish-input-group">
+                    <input [(ngModel)] = "searchTerm" type="text" class="form-control"  placeholder="Search">
+                    <span class="input-group-addon">
+                        <button type="submit" [routerLink]="['result']" [queryParams]="{ term: searchTerm }">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>  
+                    </span>
+                </div>
+        </div>
+	</div>
+</div> -->
+
+<div class="row justify-content-center">
+        
+        <div class="col col-lg-8">
+          <div class="input-group">
+            <input [(ngModel)] = "searchTerm" type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+              <button class="btn btn-secondary" type="submit" [routerLink]="['result']" [queryParams]="{ term: searchTerm }">Go!</button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <br>
+<router-outlet></router-outlet>

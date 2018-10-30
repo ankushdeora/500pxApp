@@ -1,0 +1,40 @@
+<div>
+  <select #sel (change) = "sortBy(sel.value)">
+    <option value="artist">Artist</option>
+    <option value="year">Year</option>
+    <option value="title">Title</option>
+  </select>
+</div>
+
+
+
+<div *ngIf = "photos">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item"><a class="page-link" (click)="prePage()">Previous</a></li>
+          <li class="page-item"><a class="page-link" (click)="nextPage()">Next</a></li>
+        </ul>
+    </nav>
+  <div class="container py-5 bg-faded"> 
+    
+    <div class="row justify-content-center">
+      
+        <div class="card col-md-4"  *ngFor = "let photo of photos | condition:selectedPipe">
+          <a routerLink="/detail/{{photo.id}}" [queryParams]="{ allowed: false }" class="d-block mb-4 h-0">  
+            <img style="width: 15rem;display: block; margin-left: auto; margin-right: auto;" class="img-thumbnail" src={{photo.image_url}} alt="Card image cap">
+          </a>
+            <div class="card-block">
+                <h4 class="card-title">{{photo.name}}</h4>
+                <p class="card-text">by <b>{{photo.user.fullname}}</b></p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">in {{photo.created_at_date | date:"MM/dd/yy" }}</small>
+              </div>
+        </div>
+    </div>
+  </div>
+  
+</div>
+
+
+

@@ -1,0 +1,122 @@
+<div class="span4 well">
+  <div>
+    <!-- <div *ngIf = "userStatus; else falsyTemplate"> -->
+    <div class="span1">
+      <a href={{authUserDetails.userpic_url}} class="thumbnail">
+        <img [src]="authUserDetails.userpic_url" alt=""></a>
+    </div>
+    <div class="span4">
+      <p> <strong>{{authUserDetails.fullname}}</strong>
+      </p>
+      <span class=" badge badge-warning">{{ authUserDetails.friends_count}} friends</span>
+      <span class=" badge badge-info">{{ authUserDetails.followers_count }} followers</span>
+      <br>
+      <button routerLink="/upload">Upload Picture</button>
+    </div>
+
+    <!-- Page Content -->
+    <div class="container">
+      <h1 class="my-4 text-center text-lg-left">My Photos</h1>
+
+      <div class="row text-center text-lg-left">
+
+        <div class="col-xl-3 col-lg-4 col-6" *ngFor = "let photo of userPhotos">
+          <a routerLink="/detail/{{photo.id}}" class="d-block mb-4 h-0">
+
+            <img class="img-fluid img-thumbnail" src="{{photo.image_url}}" alt="">
+
+          </a>
+          <div class = "caption">
+            <h3>{{photo.name}}</h3>
+            <p>Some sample text. Some sample text.</p>
+
+            <p>
+              <!-- <a data-toggle="modal" data-target="#ModalL" (click)="onSelect(photo)" class = "btn btn-default" role = "button">
+                 Button
+              </a>
+              <button data-toggle="modal" data-target="#ModalL" (click)="onSelect(photo)" type="button" class="btn btn-light">Light</button> -->
+              <button data-toggle="modal" data-target="#ModalL" (click)="onSelect(photo)" type="button" class="btn btn-secondary btn-lg">{{photo.votes_count}} Likes</button>
+            </p>
+
+          </div>
+          <!-- <a data-toggle="modal" data-target="#ModalL" (click)="onSelect(photo)">Likes</a> -->
+        </div>
+
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="ModalL" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div *ngIf = "selectedPhoto">
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">{{selectedPhoto.name}}</h4>
+                <h4 class="modal-title">{{selectedPhoto.votes_count}} Likes</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                <div *ngFor = "let photovotes of selectedPhotoLikes">
+                  <div class="media">
+                    <img class="d-flex mr-3" src="{{photovotes.userpic_https_url}}" alt="Generic placeholder image">
+                    <div class="media-body">
+                      <h5 class="mt-0">{{photovotes.fullname}}</h5>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.container -->
+
+
+
+    <!-- <div class="span1">
+        <div class="form-group">
+            <label for="usr">ID:</label>
+            <input type="text" class="form-control" id="idNum" [(ngModel)] = "delIDPhoto">
+        </div>
+        <button (click) ="deletePhoto()">Delete Photo</button>
+    </div>
+    <div class="span1">
+        <div class="form-group row">
+            <div class="col-xs-3">
+              <label for="ex1">Name</label>
+              <input class="form-control" id="ex1" type="text">
+            </div>
+            <div class="col-xs-3">
+              <label for="ex2">Dis</label>
+              <input class="form-control" id="ex2" type="text">
+            </div>
+            <div class="col-xs-3">
+              <label for="ex3">File</label> -->
+    <!-- <input class="form-control" id="ex3" type="text"> -->
+    <!-- <input #fileInput type="file" (change) = "selectFile()">
+  </div>
+</div>
+
+<button (click) ="uploadPhoto()">upload photo</button>
+
+</div>
+
+<div class="span1">
+<button (click) ="remPhotoTag()">Remove photo tag</button>
+<button (click) ="addPhotoTag()">add photo tag</button>
+</div> -->
+    <!-- </div>
+    <ng-template #falsyTemplate>
+            <h1>Condition Failed!</h1>
+            <h3>Please Login</h3>
+    </ng-template> -->
+  </div>
+</div>

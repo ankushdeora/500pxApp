@@ -1,0 +1,22 @@
+<h3>Upload</h3>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-5">
+      <div class="input-group">
+        <input [(ngModel)] = "name" type="text" class="form-control" placeholder="Title for photo" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      <br>
+      <div class="input-group">
+        <textarea [(ngModel)] = "description" class="form-control" placeholder="Description" id="exampleTextarea" rows="4"></textarea>
+      </div>
+      <br>
+    </div>
+
+  </div>
+</div>
+<input type='file' #fileInput (change) = "selectFile($event)">
+
+<button (click) ="uploadPhoto()">upload photo</button>
+
+<br>
+<img [src]="url">
